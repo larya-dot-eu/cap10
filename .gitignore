@@ -1,0 +1,17 @@
+.DS_Store
+.vscode/
+*.swp
+/CLAUDE.md
+
+# Local test runs during development - real games create their own
+# cap10-progress.md in the user's own project directory, not here.
+cap10-progress.md
+.cap10-backup.md
+cap10-archive-*.md
+
+# Design/dev artifacts kept out of the published skill. The conversation
+# transcript spells out the hidden gem in full, so shipping it would spoil
+# the surprise the references/post-completion.md filename was renamed to protect.
+.gstack
+SKETCH-hooks.md
+.claude/
