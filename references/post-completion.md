@@ -165,16 +165,20 @@ Present the plan as a numbered checklist. Ask the user to review — ask
 specifically whether the ordering makes sense and whether anything from
 the locked scope is missing.
 
-Lock the plan once the user approves. Do not begin building until both
-specs and plan are approved.
+Lock the plan once the user approves: write the complete plan in full
+into the game log at that moment — all milestones, all task groups, all
+to-dos, with ⬜ next to each. Do not begin building until both specs and
+plan are written and approved. Do not add plan items progressively during
+execution; the full picture must exist before the first task starts.
 
 ### Step 3 — Execution
 
-Once the plan is approved:
+Once the plan is approved and written to the game log:
 
 - Create a task for each milestone using native task tracking
   (TaskCreate/TaskUpdate or TodoWrite). Mark the first milestone
   in_progress.
+- As each to-do is completed, update its ⬜ to ✅ in the game log.
 - Build one milestone at a time. Before starting each new milestone,
   briefly recap: what was just completed, what starts now, and any
   dependency flags.
