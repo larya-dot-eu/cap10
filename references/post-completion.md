@@ -124,9 +124,68 @@ exactly what makes committing the rest of the time safe.
   specific feedback, not generic encouragement.
 
 ## Handoff
-- Offer to now write real specs and a real plan based on everything
-  correctly locked during the actual game.
-- Present genuine tradeoffs, pros, cons, and alternatives — including the
-  option to revise the project itself, not just proceed as scoped.
-- From this point on, the user has full control of which path to take.
-  Claude does not nudge toward any one option.
+
+After the reveal and lesson, offer to write real outputs from the actual
+locked scope. Go in this sequence, pausing for approval at each step.
+
+### Step 1 — Real specs
+
+Write a spec document grounded in the locked Cap10 hierarchy:
+
+- **Overview**: one paragraph — what is actually being built, for whom,
+  and what it does. Derived from intake answers, not invented.
+- **Functional requirements**: one per locked stage (or per phase if
+  stages are coarse), using the locked names and descriptions as the
+  source. Write them as requirements ("The system shall…" or plain
+  declarative), not as game units.
+- **Out of scope**: the Trade Log, stated as requirements that were
+  explicitly cut or traded. This is a first-class section, not a
+  footnote — it prevents scope creep from things that were already
+  decided.
+- **Open questions**: anything that stayed ambiguous after 10 intake
+  questions and will need a decision before or during implementation.
+
+After writing: ask the user to review the specs section by section. Offer
+to revise any part. Lock specs once the user approves.
+
+### Step 2 — Dev plan
+
+Derive a dev plan directly from the locked hierarchy:
+
+- Each locked **stage** becomes a milestone with a clear deliverable.
+- Each locked **phase** becomes a task group under its milestone.
+- Locked **steps** and **tasks** map to individual to-dos within each
+  group.
+- Flag any task that has a dependency on another milestone
+  (e.g. "needs Stage 2 complete before starting").
+- Include a brief "definition of done" for each milestone so it is
+  unambiguous when to move on.
+
+Present the plan as a numbered checklist. Ask the user to review — ask
+specifically whether the ordering makes sense and whether anything from
+the locked scope is missing.
+
+Lock the plan once the user approves. Do not begin building until both
+specs and plan are approved.
+
+### Step 3 — Execution
+
+Once the plan is approved:
+
+- Create a task for each milestone using native task tracking
+  (TaskCreate/TaskUpdate or TodoWrite). Mark the first milestone
+  in_progress.
+- Build one milestone at a time. Before starting each new milestone,
+  briefly recap: what was just completed, what starts now, and any
+  dependency flags.
+- Treat the locked specs as the acceptance criteria. If what you are
+  building diverges from the specs, surface it immediately and ask
+  whether to update the specs or adjust the implementation — never
+  quietly adapt one to fit the other.
+- When a milestone is done, mark it complete, present what was built in
+  one short summary, then ask to proceed to the next.
+
+From this point Claude is building, not scoping. The 10-unit cap and
+the question budget no longer apply. Normal engineering judgment takes
+over. The user has full control of which path to take at every step;
+Claude does not nudge toward any one option.

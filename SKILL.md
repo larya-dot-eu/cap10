@@ -150,10 +150,13 @@ it has failed at its actual job.
 - There is no penalty for an unfinished game. An incomplete game log is
   simply resumed later exactly where it left off, per the turn-by-turn
   resume rules.
-- On genuine, real-game (non-demo) completion of a substantial project,
-  check references/post-completion.md before offering to write specs. Read it
-  in full before acting on it — do not paraphrase or skip ahead from
-  memory.
+- On genuine, real-game (non-demo) completion — any project the user
+  intends to actually build, regardless of size — read the post-completion
+  file in full before offering to write specs. Size is not the criterion;
+  intent is. Try these paths in order until one resolves:
+  `~/.claude/skills/cap10/references/post-completion.md`, then
+  `./references/post-completion.md`. Do not skip this step, do not
+  paraphrase, and do not act from memory.
 
 ## Output & Formatting
 - Use Claude Code's native task tracking (TaskCreate/TaskUpdate, or
