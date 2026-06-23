@@ -171,7 +171,7 @@ to-dos, with ⬜ next to each. Do not begin building until both specs and
 plan are written and approved. Do not add plan items progressively during
 execution; the full picture must exist before the first task starts.
 
-### Step 3 — Execution
+### Step 3 — Execution (spec-driven, TDD)
 
 Once the plan is approved and written to the game log:
 
@@ -179,15 +179,43 @@ Once the plan is approved and written to the game log:
   (TaskCreate/TaskUpdate or TodoWrite). Mark the first milestone
   in_progress.
 - As each to-do is completed, update its ⬜ to ✅ in the game log.
-- Build one milestone at a time. Before starting each new milestone,
-  briefly recap: what was just completed, what starts now, and any
-  dependency flags.
-- Treat the locked specs as the acceptance criteria. If what you are
-  building diverges from the specs, surface it immediately and ask
-  whether to update the specs or adjust the implementation — never
-  quietly adapt one to fit the other.
-- When a milestone is done, mark it complete, present what was built in
-  one short summary, then ask to proceed to the next.
+
+**Per-milestone loop (repeat for each milestone):**
+
+1. **Write tests first.** Before writing any implementation code, derive
+   tests directly from the locked specs for this milestone. Each
+   functional requirement from Step 1 should have at least one test that
+   would fail if the requirement isn't met. Tests go in before code.
+2. **Implement to pass.** Write the minimum implementation that makes the
+   tests pass. No more.
+3. **Run checks.** After each task within the milestone, run all
+   available checks: tests, linter, type-checker, build — whatever
+   applies to the project. Do not mark a task ✅ until its checks pass.
+4. **Fix on the spot.** If a check fails, fix it before moving to the
+   next task. Note what broke and what the fix was in a brief inline
+   comment in the game log next to the affected ✅.
+5. **Spec drift check.** If the implementation diverges from the locked
+   specs, surface it immediately — never quietly adapt one to fit the
+   other. Ask whether to update the specs or adjust the implementation.
+6. **Milestone recap.** When all tasks in a milestone are ✅ and all
+   checks pass, mark the milestone complete, present a one-paragraph
+   summary of what was built, then ask to proceed to the next.
+
+### Step 4 — Code review
+
+After every milestone is ✅:
+
+- Review all changes made during execution as a whole.
+- Check for: spec compliance (does it match Step 1?), test coverage
+  (is every functional requirement tested?), obvious bugs, and code
+  quality (clarity, duplication, anything that will hurt the next
+  person who reads it).
+- Present findings as two lists:
+  - **Fix now**: anything that breaks correctness, violates the specs,
+    or is a security/data-loss risk. Fix these before declaring done.
+  - **Note for later**: style, minor improvements, future-proofing.
+    Do not fix these now unless the user asks.
+- Once all "fix now" items are resolved, declare the build complete.
 
 From this point Claude is building, not scoping. The 10-unit cap and
 the question budget no longer apply. Normal engineering judgment takes
